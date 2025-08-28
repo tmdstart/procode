@@ -59,6 +59,20 @@ button[kind="secondary"]:active {
     margin: 0 auto;
 }
 
+# .st-key-header_box {
+#     position: fixed;
+#     top: 0;
+#     left: 0;
+#     right: 0;
+#     margin-top: 60px;
+#     display: flex;
+#     z-index: 1000;
+#     padding: -60px;
+#     background : white;
+# }
+# .stApp {
+#     margin-top: 60px;
+# }
 </style>
 """, unsafe_allow_html=True)
 
@@ -72,15 +86,16 @@ def go(step: str):
 
 # -------------------- 헤더 정의 --------------------
 def page_header(page_name):
-    img = Image.open('./bangu.png')
-    col1, col2, e1, col3, e2 = st.columns([1,1,1,3,1])
-    with col1:
-        st.image(img, width=150)
-    with col2:
-        st.header("방구")
-    with col3:
-        st.title(page_name)
-    st.divider()
+    with st.container(key='header_box'):
+        img = Image.open('./bangu.png')
+        col1, col2, e1, col3, e2 = st.columns([1,1,1,3,1])
+        with col1:
+            st.image(img, width=150)
+        with col2:
+            st.header("방구")
+        with col3:
+            st.title(page_name)
+        st.divider()
 
 # -------------------- 페이지 정의 --------------------
 def page_home():
